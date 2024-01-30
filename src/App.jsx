@@ -5,11 +5,9 @@ import SecondPage from 'pages/SecondPage/SecondPage';
 import HalfPage from 'pages/HalfPage/HalfPage';
 import ErrorPage from 'pages/ErrorPage/ErrorPage';
 import { AppWrapper } from './App.styled';
-
-const test = import.meta.env.VITE_API_TEST;
+import GlobalStyle from './styles/GlobalStyle';
 
 function App() {
-  console.log(test);
   return (
     <AppWrapper>
       <Routes>
@@ -21,6 +19,7 @@ function App() {
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
+      <GlobalStyle />
     </AppWrapper>
   );
 }
