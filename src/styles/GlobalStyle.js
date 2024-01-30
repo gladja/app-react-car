@@ -1,6 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
 
 const GlobalStyle = createGlobalStyle`
+${normalize}
+
 body {
   background-color: #000;
   /* background-image: url('./assets/background.png'); */
