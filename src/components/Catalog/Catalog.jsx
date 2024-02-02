@@ -20,22 +20,23 @@ export const Catalog = () => {
   const formik = useFormik({
     initialValues: initialValues,
     onSubmit: ({ make }) => {
-      console.log(make);
       dispatch(getAdvertFilter({ make, page }));
     },
   });
-
   return (
     <>
       <form onSubmit={formik.handleSubmit}>
         <select name="make" onChange={formik.handleChange}>
+          <option value="">All</option>
           <option value="volvo">Volvo</option>
           <option value="buick">Buick</option>
           <option value="hummer">HUMMER</option>
         </select>
-        <button type={'submit'}>search</button>
+        <button type={'submit'} onClick={() => setPage(1)}>
+          search
+        </button>
       </form>
-      <div>Catalog Car!</div>
+      <h2>Catalog Car!</h2>
       {cars.map((itm) => (
         <ul key={itm.id}>
           <li>

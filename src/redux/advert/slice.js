@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getAdvert } from './operations';
+import { getAdvert, getAdvertFilter } from './operations';
 
 const initialState = {
   cars: [],
@@ -10,10 +10,15 @@ const advertSlice = createSlice({
   name: 'advert',
   initialState,
   extraReducers: (builder) => {
-    builder.addCase(getAdvert.fulfilled, (state, { payload }) => {
-      //   console.log(payload);
-      state.cars = payload;
-    });
+    builder
+      .addCase(getAdvert.fulfilled, (state, { payload }) => {
+        //   console.log(payload);
+        state.cars = payload;
+      })
+      .addCase(getAdvertFilter.fulfilled, (state, { payload }) => {
+        //   console.log(payload);
+        state.cars = payload;
+      });
   },
 });
 
