@@ -1,11 +1,14 @@
 import { Catalog } from '../components/Catalog';
+import { Container } from '../components/Container';
 import { Header } from '../components/Header';
 
 export const CatalogPage = () => {
   return (
     <>
-      <Header />
-      <Catalog />
+      <Container>
+        <Header />
+        <Catalog />
+      </Container>
     </>
   );
 };
