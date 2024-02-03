@@ -13,7 +13,15 @@ const advertSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getAdvert.fulfilled, (state, { payload }) => {
-        state.cars = payload;
+        // state.cars = payload;
+        // console.log(payload);
+        // if (state.cars.length === 0) {
+        //   state.cars = payload;
+        // }
+        // if (state.cars.length !== ) {
+        //   state.cars = [...payload];
+        // }
+        state.cars = [...payload];
       })
       .addCase(getAdvertFilter.fulfilled, (state, { payload }) => {
         // console.log(payload);

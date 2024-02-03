@@ -6,6 +6,9 @@ import { useFormik } from 'formik';
 import { getAdvertFilter } from '../../redux/advert/operations';
 import { Filters } from './Filters/Filters';
 import { filterCars } from '../../redux/advert/slice';
+import { Button } from 'antd';
+import { WrapCard, WrapList, Card, WrapImg, Img } from './Catalog.styled';
+import img from '../../assets/no_img.jpeg';
 
 export const Catalog = () => {
   const [page, setPage] = useState(1);
@@ -28,29 +31,35 @@ export const Catalog = () => {
       dispatch(filterCars(price));
     },
   });
-  // console.log(cars);
-  // const filter = cars.filter((itm) => {
-  //   if (formik.values.price === '') {
-  //     return cars;
-  //   }
-  //   return (
-  //     Number(itm.rentalPrice.replace('$', '')) <= Number(formik.values.price)
-  //   );
-  // });
-  // console.log(filter);
+  console.log(cars);
   return (
     <>
       <Filters formik={formik} setPage={setPage} />
-      <h2>Catalog Car!</h2>
-      {cars?.map((itm) => (
-        <ul key={itm.id}>
-          <li>
-            <div>
-              {itm.make}___{itm.model}___{itm.rentalPrice.replace('$', '')}
-            </div>
+      <WrapList>
+        {cars?.map((itm) => (
+          <li key={itm.id}>
+            <WrapCard>
+              {/* {itm.make}___{itm.model}___{itm.rentalPrice.replace('$', '')} */}
+              <Card>
+                <WrapImg>
+                  <Img src={itm.img ? itm.img : img} alt="" />
+                </WrapImg>
+                <div>{itm.make}</div>
+                <div>{itm.model}</div>
+                <Button
+                  size="large"
+                  type="primary"
+                  style={{
+                    borderRadius: '12px',
+                  }}
+                >
+                  Learn more
+                </Button>
+              </Card>
+            </WrapCard>
           </li>
-        </ul>
-      ))}
+        ))}
+      </WrapList>
       {cars?.length > 11 && (
         <button type={'button'} onClick={() => setPage(page + 1)}>
           Load more
