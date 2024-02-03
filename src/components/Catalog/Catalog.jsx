@@ -4,6 +4,8 @@ import { getAdvert } from '../../redux/advert';
 import { selectCars } from '../../redux/advert';
 import { useFormik } from 'formik';
 import { getAdvertFilter } from '../../redux/advert/operations';
+import { Filters } from './Filters/Filters';
+import { filterCars } from '../../redux/advert/slice';
 
 export const Catalog = () => {
   const [page, setPage] = useState(1);
@@ -15,33 +17,36 @@ export const Catalog = () => {
 
   const initialValues = {
     make: '',
+    price: '',
   };
 
   const formik = useFormik({
     initialValues: initialValues,
-    onSubmit: ({ make }) => {
+    onSubmit: ({ make, price }) => {
+      // console.log(make, price);
       dispatch(getAdvertFilter({ make, page }));
+      dispatch(filterCars(price));
     },
   });
+  // console.log(cars);
+  // const filter = cars.filter((itm) => {
+  //   if (formik.values.price === '') {
+  //     return cars;
+  //   }
+  //   return (
+  //     Number(itm.rentalPrice.replace('$', '')) <= Number(formik.values.price)
+  //   );
+  // });
+  // console.log(filter);
   return (
     <>
-      <form onSubmit={formik.handleSubmit}>
-        <select name="make" onChange={formik.handleChange}>
-          <option value="">All</option>
-          <option value="volvo">Volvo</option>
-          <option value="buick">Buick</option>
-          <option value="hummer">HUMMER</option>
-        </select>
-        <button type={'submit'} onClick={() => setPage(1)}>
-          search
-        </button>
-      </form>
+      <Filters formik={formik} setPage={setPage} />
       <h2>Catalog Car!</h2>
-      {cars.map((itm) => (
+      {cars?.map((itm) => (
         <ul key={itm.id}>
           <li>
             <div>
-              {itm.make}___{itm.model}
+              {itm.make}___{itm.model}___{itm.rentalPrice.replace('$', '')}
             </div>
           </li>
         </ul>

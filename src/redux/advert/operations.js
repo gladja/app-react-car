@@ -18,18 +18,19 @@ export const getAdvert = createAsyncThunk('advert/getAdvert', async (page) => {
 export const getAdvertFilter = createAsyncThunk(
   'advert/getAdvertFilter',
   async ({ make, page }) => {
-    console.log(make, page);
+    // console.log(make, page);
     const data = await apiService(
       {
         method: 'get',
-        url: `/advert/?make=${make}&limit=12&page=${page}`,
+        // url: `/advert/?make=${make}&limit=12&page=${page}`,
+        url: `/advert/?make=${make}`,
       },
       (error) => {
         console.log(error.message);
         //add notification error
       }
     );
-    console.log(data);
+    // console.log(data);
     return data;
   }
 );
