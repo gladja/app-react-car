@@ -7,7 +7,14 @@ import { getAdvertFilter } from '../../redux/advert/operations';
 import { Filters } from './Filters/Filters';
 import { filterCars } from '../../redux/advert/slice';
 import { Button } from 'antd';
-import { WrapCard, WrapList, Card, WrapImg, Img } from './Catalog.styled';
+import {
+  WrapCard,
+  WrapList,
+  Card,
+  WrapImg,
+  Img,
+  WrapBtn,
+} from './Catalog.styled';
 import img from '../../assets/no_img.jpeg';
 
 export const Catalog = () => {
@@ -60,11 +67,22 @@ export const Catalog = () => {
           </li>
         ))}
       </WrapList>
-      {cars?.length > 11 && (
-        <button type={'button'} onClick={() => setPage(page + 1)}>
-          Load more
-        </button>
-      )}
+      <WrapBtn>
+        {cars?.length > 11 && (
+          <Button
+            htmlType="button"
+            size="large"
+            onClick={() => setPage(page + 1)}
+            style={{
+              padding: '0 44px',
+              borderRadius: '12px',
+              // margin: '0 0 50px',
+            }}
+          >
+            Load more
+          </Button>
+        )}
+      </WrapBtn>
     </>
   );
 };

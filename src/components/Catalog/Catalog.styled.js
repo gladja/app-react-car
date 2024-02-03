@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Wrap } from '../Container/Container.styled';
 
 export const WrapList = styled.ul`
   display: flex;
@@ -7,11 +6,12 @@ export const WrapList = styled.ul`
   flex-wrap: wrap;
   gap: 50px 29px;
 
-  margin: 50px auto;
+  margin: 60px auto;
   max-width: 1184px;
 `;
 
 export const WrapCard = styled.div`
+  display: flex;
   width: 274px;
   height: 426px;
 `;
@@ -19,7 +19,7 @@ export const WrapCard = styled.div`
 export const Card = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
 `;
 
 export const WrapImg = styled.div`
@@ -32,4 +32,10 @@ export const Img = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+`;
+
+export const WrapBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
 `;
