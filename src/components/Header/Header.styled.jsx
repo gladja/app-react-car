@@ -18,7 +18,7 @@ export const Logo = styled.p`
 `;
 
 export const LogoColor = styled.span`
-  color: #1677ff;
+  color: #3470ff;
 `;
 
 export const Nav = styled.nav`
@@ -30,6 +30,6 @@ export const Nav = styled.nav`
 
 export const NavLinkStyled = styled(NavLink)`
   &.active {
-    color: #1677ff;
+    color: #3470ff;
   }
 `;

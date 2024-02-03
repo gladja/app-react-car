@@ -14,11 +14,17 @@ import {
   WrapImg,
   Img,
   WrapBtn,
+  WrapModel,
+  TextColor,
+  Text,
+  Border,
 } from './Catalog.styled';
 import img from '../../assets/no_img.jpeg';
+import { Modal } from '../Modal/Modal';
 
 export const Catalog = () => {
   const [page, setPage] = useState(1);
+  const [selectedCar, setSelectedCar] = useState(false);
   const cars = useSelector(selectCars);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -33,29 +39,56 @@ export const Catalog = () => {
   const formik = useFormik({
     initialValues: initialValues,
     onSubmit: ({ make, price }) => {
-      // console.log(make, price);
       dispatch(getAdvertFilter({ make, page }));
       dispatch(filterCars(price));
     },
   });
-  console.log(cars);
+
+  const handleModal = (car) => {
+    setSelectedCar(car);
+  };
   return (
     <>
+      {selectedCar && (
+        <Modal car={selectedCar} setSelectedCar={setSelectedCar} />
+      )}
       <Filters formik={formik} setPage={setPage} />
       <WrapList>
         {cars?.map((itm) => (
           <li key={itm.id}>
             <WrapCard>
-              {/* {itm.make}___{itm.model}___{itm.rentalPrice.replace('$', '')} */}
               <Card>
                 <WrapImg>
                   <Img src={itm.img ? itm.img : img} alt="" />
                 </WrapImg>
-                <div>{itm.make}</div>
-                <div>{itm.model}</div>
+                <WrapModel>
+                  <div>
+                    {itm.make} <TextColor>{itm.model}</TextColor>, {itm.year}
+                  </div>
+                  <div>{itm.rentalPrice}</div>
+                </WrapModel>
+                <Text>
+                  {itm.address
+                    .split(' ')
+                    [itm.address.split(' ').length - 2].slice(0, -1)}
+                  <Border />
+                  {itm.address.split(' ')[itm.address.split(' ').length - 1]}
+                  <Border />
+                  {itm.rentalCompany}
+                  <Border />
+                  {itm.type}
+                  <Border />
+                  {itm.model}
+                  <Border />
+                  {itm.id}
+                  <Border />
+                  {itm.accessories[0]}
+                </Text>
                 <Button
                   size="large"
                   type="primary"
+                  htmlType="button"
+                  onClick={() => handleModal(itm)}
                   style={{
                     borderRadius: '12px',
                   }}
@@ -76,7 +109,6 @@ export const Catalog = () => {
             style={{
               padding: '0 44px',
               borderRadius: '12px',
-              // margin: '0 0 50px',
             }}
           >
             Load more

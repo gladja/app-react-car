@@ -43,4 +43,5 @@ export const WrapImg = styled.div`
 
 export const Img = styled.img`
   max-width: 100%;
+  margin-left: 30%;
 `;

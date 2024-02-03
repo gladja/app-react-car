@@ -34,6 +34,26 @@ export const Img = styled.img`
   object-fit: cover;
 `;
 
+export const WrapModel = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const TextColor = styled.span`
+  color: #3470ff;
+`;
+
+export const Text = styled.p`
+  line-height: 1.9;
+  color: #12141780;
+  font-size: 12px;
+`;
+
+export const Border = styled.span`
+  border-left: 1px solid #12141780;
+  margin: 0 4px;
+`;
+
 export const WrapBtn = styled.div`
   display: flex;
   justify-content: center;
