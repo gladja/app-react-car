@@ -22,8 +22,8 @@ export const getAdvertFilter = createAsyncThunk(
     const data = await apiService(
       {
         method: 'get',
-        // url: `/advert/?make=${make}&limit=12&page=${page}`,
-        url: `/advert/?make=${make}`,
+        url: `/advert/?make=${make}&limit=12&page=${page}`,
+        // url: `/advert/?make=${make}`,
       },
       (error) => {
         console.log(error.message);

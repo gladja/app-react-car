@@ -107,9 +107,7 @@ export const Modal = ({ car, setSelectedCar }) => {
             ))}
             <TextBorder>
               Mileage:{' '}
-              <TextColor>
-                {new Intl.NumberFormat('en-US').format(car.mileage)}
-              </TextColor>
+              <TextColor>{car.mileage.toLocaleString('en-US')}</TextColor>
             </TextBorder>
             <TextBorder>
               Price: <TextColor>{car.rentalPrice}</TextColor>

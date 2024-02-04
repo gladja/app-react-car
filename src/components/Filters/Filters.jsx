@@ -1,8 +1,27 @@
 import { Button, Select, Input, Space } from 'antd';
-import { makes, price } from '../filterValues.js';
+import { makes, price } from './filterValues.js';
 import { Label, LabelWrap, WrapFilter } from './Filters.styled.js';
+import { useFormik } from 'formik';
+import { getAdvertFilter } from '../../redux/advert/operations.js';
+import { filterCars } from '../../redux/advert/slice.js';
+import { useDispatch } from 'react-redux';
 
-export const Filters = ({ formik, setPage }) => {
+export const Filters = ({ page, setPage }) => {
+  const dispatch = useDispatch();
+  const initialValues = {
+    make: '',
+    price: '',
+    from: '',
+    to: '',
+  };
+
+  const formik = useFormik({
+    initialValues: initialValues,
+    onSubmit: ({ make, price, from, to }) => {
+      dispatch(getAdvertFilter({ make, page }));
+      dispatch(filterCars({ price, make, from, to }));
+    },
+  });
   return (
     <>
       <form onSubmit={formik.handleSubmit}>
@@ -44,18 +63,23 @@ export const Filters = ({ formik, setPage }) => {
           </LabelWrap>
 
           <LabelWrap>
-            <Label htmlFor="price">Сar mileage / km</Label>
+            <Label htmlFor="from">Сar mileage / km</Label>
             <Space.Compact>
               <Input
+                id="from"
+                name="from"
                 size="large"
                 placeholder="From"
+                onChange={formik.handleChange}
                 style={{ width: 160 }}
                 type="number"
                 min={0}
               />
               <Input
+                name="to"
                 size="large"
                 placeholder="To"
+                onChange={formik.handleChange}
                 style={{ width: 160 }}
                 type="number"
                 min={0}
