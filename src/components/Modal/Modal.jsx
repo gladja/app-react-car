@@ -11,12 +11,28 @@ import {
   TextDesc,
   TextFunc,
   TextCondition,
+  TextBorder,
+  TextConditionItm,
 } from './Modal.styled';
 import img from '../../assets/no_img.jpeg';
 import { CloseOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
+import { useEffect } from 'react';
 
 export const Modal = ({ car, setSelectedCar }) => {
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.code === 'Escape') {
+        setSelectedCar(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [setSelectedCar]);
+
   const handleBackdrop = (e) => {
     if (e.target === e.currentTarget) {
       setSelectedCar(false);
@@ -28,6 +44,7 @@ export const Modal = ({ car, setSelectedCar }) => {
         <ModalWindow>
           <WrapCloseIcon>
             <Button
+              htmlType="button"
               shape="circle"
               style={{ border: 'none' }}
               onClick={() => setSelectedCar(false)}
@@ -63,9 +80,54 @@ export const Modal = ({ car, setSelectedCar }) => {
           </Text>
           <TextDesc>{car.description}</TextDesc>
           <TextFunc>Accessories and functionalities:</TextFunc>
-          <Text>{car.accessories.join(' | ')}</Text>
-          <Text>{car.functionalities.join(' | ')}</Text>
+          <Text>
+            {car.accessories.map((itm, i) => (
+              <span key={i}>
+                {itm}
+                <Border />
+              </span>
+            ))}
+            {car.functionalities.map((itm, i) => (
+              <span key={i}>
+                {itm}
+                <Border />
+              </span>
+            ))}
+          </Text>
           <TextCondition>Rental Conditions: </TextCondition>
+          <TextConditionItm>
+            {car.rentalConditions.split('\n').map((itm, i) => (
+              <TextBorder key={i}>
+                {itm
+                  .split(/(\d+)/)
+                  .map((item, i) =>
+                    isNaN(item) ? item : <TextColor key={i}>{item}</TextColor>
+                  )}
+              </TextBorder>
+            ))}
+            <TextBorder>
+              Mileage:{' '}
+              <TextColor>
+                {new Intl.NumberFormat('en-US').format(car.mileage)}
+              </TextColor>
+            </TextBorder>
+            <TextBorder>
+              Price: <TextColor>{car.rentalPrice}</TextColor>
+            </TextBorder>
+          </TextConditionItm>
+          <a href="tel:+380730000000">
+            <Button
+              size="large"
+              type="primary"
+              htmlType="submit"
+              style={{
+                padding: '0 44px',
+                borderRadius: '12px',
+              }}
+            >
+              Rental car
+            </Button>
+          </a>
         </ModalWindow>
       </WrapModal>
     </>

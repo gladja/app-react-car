@@ -22,7 +22,6 @@ export const ModalWindow = styled.div`
   justify-content: flex-start;
   background-color: rgba(255, 255, 255, 1);
   width: 541px;
-  height: 752px;
   border-radius: 24px;
 `;
 
@@ -78,6 +77,22 @@ export const TextFunc = styled.p`
 `;
 
 export const TextCondition = styled.p`
+  font-size: 14px;
   margin-top: 24px;
   margin-bottom: 8px;
+`;
+
+export const TextConditionItm = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+`;
+
+export const TextBorder = styled.div`
+  font-size: 12px;
+  color: #363535;
+  background: #f9f9f9;
+  padding: 8px 16px;
+  border-radius: 35px;
 `;
