@@ -2,7 +2,7 @@ import { Button, Select, Input, Space } from 'antd';
 import { makes, price } from './filterValues.js';
 import { Label, LabelWrap, WrapFilter } from './Filters.styled.js';
 import { useFormik } from 'formik';
-import { getAdvertFilter } from '../../redux/advert/operations.js';
+import { getAdvertFilter } from '../../redux/advert';
 import { filterCars } from '../../redux/advert/slice.js';
 import { useDispatch } from 'react-redux';
 

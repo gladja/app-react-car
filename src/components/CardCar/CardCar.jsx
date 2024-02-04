@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFavorites } from '../../redux/advert/selectors';
+import { selectFavorites } from '../../redux/advert';
 import {
   Border,
   Card,

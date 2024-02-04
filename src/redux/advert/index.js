@@ -1,4 +1,4 @@
-export { getAdvert } from './operations';
+export { getAdvert, getAdvertFilter } from './operations';
 
 export {
   selectCars,

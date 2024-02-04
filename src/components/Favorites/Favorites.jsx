@@ -22,7 +22,7 @@ export const Favorites = () => {
   useEffect(() => {
     dispatch(getAdvert(page));
   }, [dispatch, favorite, page]);
-  //make.length > 0
+
   const filter =
     make !== '' || price !== ''
       ? favorite.filter(

@@ -22,8 +22,8 @@ const advertSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getAdvert.fulfilled, (state, { payload }) => {
-        // state.cars = [...payload];
-        state.cars = [...state.cars, ...payload];
+        state.cars = [...payload];
+        // state.cars = [...state.cars, ...payload];
         state.isLoading = false;
       })
       .addCase(getAdvert.rejected, (state) => {
