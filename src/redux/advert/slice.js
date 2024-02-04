@@ -22,15 +22,8 @@ const advertSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getAdvert.fulfilled, (state, { payload }) => {
-        // state.cars = payload;
-        // console.log(payload);
-        // if (state.cars.length === 0) {
-        //   state.cars = payload;
-        // }
-        // if (state.cars.length !== ) {
-        //   state.cars = [...payload];
-        // }
-        state.cars = [...payload];
+        // state.cars = [...payload];
+        state.cars = [...state.cars, ...payload];
         state.isLoading = false;
       })
       .addCase(getAdvert.rejected, (state) => {
@@ -40,39 +33,23 @@ const advertSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getAdvertFilter.fulfilled, (state, { payload }) => {
-        // console.log(payload);
         const filter = payload.filter((itm) => {
           if (state.filter.price === '') {
             return itm;
           }
 
-          if (
-            state.filter.price !== '' ||
-            state.filter.make !== ''
-            // state.filter.from !== '' ||
-            // state.filter.to !== ''
-          ) {
+          if (state.filter.price !== '' || state.filter.make !== '') {
             return (
               Number(itm.rentalPrice.replace('$', '')) <=
               Number(state.filter.price)
             );
-            // (itm.mileage >= state.filter.from &&
-            //   itm.mileage <= state.filter.to)
           }
 
           if (state.filter.from !== '' || state.filter.to !== '') {
             return (
-              itm.mileage >= state.filter.from
-              // || itm.mileage <= state.filter.to
+              itm.mileage >= state.filter.from || itm.mileage <= state.filter.to
             );
           }
-
-          // return (
-          //   Number(itm.rentalPrice.replace('$', '')) <=
-          //   Number(state.filter.price)
-          // );
-
-          // return itm;
         });
         state.cars = filter;
         state.isLoading = false;
@@ -84,7 +61,6 @@ const advertSlice = createSlice({
 
   reducers: {
     filterCars: (state, { payload }) => {
-      console.log(payload);
       state.filter.price = payload.price;
       state.filter.make = payload.make;
       state.filter.from = payload.from;

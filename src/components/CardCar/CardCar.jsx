@@ -24,14 +24,14 @@ export const CardCar = ({ cars, handleModal, page, setPage }) => {
   const dispatch = useDispatch();
 
   const handleFavoriteClick = (itemId) => {
-    const clickedCar = cars.find((itm) => itm.id === itemId);
+    const clickedCar = cars?.find((itm) => itm.id === itemId);
     if (clickedCar) {
       dispatch(setFavorite(clickedCar));
     }
   };
 
   const handleFavoriteRemove = (itemId) => {
-    const clickedCar = cars.find((itm) => itm.id === itemId);
+    const clickedCar = cars?.find((itm) => itm.id === itemId);
     if (clickedCar) {
       dispatch(removeFavorite(clickedCar));
     }

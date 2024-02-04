@@ -16,15 +16,21 @@ export const Favorites = () => {
   const [selectedCar, setSelectedCar] = useState(false);
   const favorite = useSelector(selectFavorites);
   const isLOading = useSelector(selectIsLoading);
-  const { make } = useSelector(selectFilter);
+  const { make, price } = useSelector(selectFilter);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAdvert(page));
   }, [dispatch, favorite, page]);
-
+  //make.length > 0
   const filter =
-    make.length > 0 ? favorite.filter((itm) => itm.make === make) : favorite;
+    make !== '' || price !== ''
+      ? favorite.filter(
+          (itm) =>
+            itm.make === make ||
+            Number(itm.rentalPrice.replace('$', '')) <= price
+        )
+      : favorite;
 
   const handleModal = (car) => {
     setSelectedCar(car);
