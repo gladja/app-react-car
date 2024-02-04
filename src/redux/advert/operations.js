@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { apiService } from '../../services';
+import { notification } from 'antd';
 
 export const getAdvert = createAsyncThunk('advert/getAdvert', async (page) => {
   const data = await apiService(
@@ -8,8 +9,10 @@ export const getAdvert = createAsyncThunk('advert/getAdvert', async (page) => {
       url: `/advert/?limit=12&page=${page}`,
     },
     (error) => {
-      console.log(error.message);
-      //add notification error
+      notification.error({
+        message: 'Error',
+        description: `${error.message}`,
+      });
     }
   );
   return data;
@@ -18,19 +21,18 @@ export const getAdvert = createAsyncThunk('advert/getAdvert', async (page) => {
 export const getAdvertFilter = createAsyncThunk(
   'advert/getAdvertFilter',
   async ({ make, page }) => {
-    // console.log(make, page);
     const data = await apiService(
       {
         method: 'get',
         url: `/advert/?make=${make}&limit=12&page=${page}`,
-        // url: `/advert/?make=${make}`,
       },
       (error) => {
-        console.log(error.message);
-        //add notification error
+        notification.error({
+          message: 'Error',
+          description: `${error.message}`,
+        });
       }
     );
-    // console.log(data);
     return data;
   }
 );

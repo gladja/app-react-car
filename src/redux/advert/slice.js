@@ -10,6 +10,7 @@ const initialState = {
     from: '',
     to: '',
   },
+  isLoading: false,
 };
 
 const advertSlice = createSlice({
@@ -17,6 +18,9 @@ const advertSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
+      .addCase(getAdvert.pending, (state) => {
+        state.isLoading = true;
+      })
       .addCase(getAdvert.fulfilled, (state, { payload }) => {
         // state.cars = payload;
         // console.log(payload);
@@ -27,6 +31,13 @@ const advertSlice = createSlice({
         //   state.cars = [...payload];
         // }
         state.cars = [...payload];
+        state.isLoading = false;
+      })
+      .addCase(getAdvert.rejected, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(getAdvertFilter.pending, (state) => {
+        state.isLoading = true;
       })
       .addCase(getAdvertFilter.fulfilled, (state, { payload }) => {
         // console.log(payload);
@@ -63,8 +74,11 @@ const advertSlice = createSlice({
 
           // return itm;
         });
-        console.log(filter);
         state.cars = filter;
+        state.isLoading = false;
+      })
+      .addCase(getAdvertFilter.rejected, (state) => {
+        state.isLoading = false;
       });
   },
 

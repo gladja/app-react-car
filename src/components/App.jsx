@@ -3,7 +3,7 @@ import { Layout } from 'components/Layout';
 import { HomePage } from 'pages/HomePage';
 import { CatalogPage } from 'pages/CatalogPage';
 import { FavoritesPage } from 'pages/FavoritesPage';
-import GlobalStyle from '../styles/GlobalStyle';
+import { GlobalStyle } from '../styles';
 
 function App() {
   return (

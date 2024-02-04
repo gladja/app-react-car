@@ -1,8 +1,14 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
+import Manrope from '../assets/font/Manrope.ttf';
 
 const GlobalStyle = createGlobalStyle`
 ${normalize}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url(${Manrope}) format('truetype');
+  }
 
 * {
   box-sizing: border-box;

@@ -17,6 +17,7 @@ import { Button } from 'antd';
 import { HeartFilled, HeartOutlined } from '@ant-design/icons';
 import img from '../../assets/no_img.jpeg';
 import { removeFavorite, setFavorite } from '../../redux/advert/slice';
+import { theme } from '../../styles';
 
 export const CardCar = ({ cars, handleModal, page, setPage }) => {
   const favorites = useSelector(selectFavorites);
@@ -53,7 +54,7 @@ export const CardCar = ({ cars, handleModal, page, setPage }) => {
                       <HeartFilled
                         style={{
                           fontSize: '20px',
-                          color: '#3470FF',
+                          color: `${theme.colors.blue}`,
                         }}
                       />
                     </Button>
@@ -69,7 +70,7 @@ export const CardCar = ({ cars, handleModal, page, setPage }) => {
                       <HeartOutlined
                         style={{
                           fontSize: '20px',
-                          color: '#fff',
+                          color: `${theme.colors.white}`,
                         }}
                       />
                     </Button>
@@ -99,7 +100,7 @@ export const CardCar = ({ cars, handleModal, page, setPage }) => {
                   <Border />
                   {itm.id}
                   <Border />
-                  {itm.accessories[0]}
+                  {itm.accessories[1]}
                 </Text>
                 <Button
                   size="large"

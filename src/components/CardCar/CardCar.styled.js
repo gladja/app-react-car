@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from '../../styles';
 
 export const WrapList = styled.ul`
   display: flex;
@@ -47,17 +48,18 @@ export const WrapModel = styled.div`
 `;
 
 export const TextColor = styled.span`
-  color: #3470ff;
+  color: ${theme.colors.blue};
 `;
 
-export const Text = styled.p`
+export const Text = styled.div`
   line-height: 1.9;
-  color: #12141780;
+  color: ${theme.colors.black80};
   font-size: 12px;
+  width: 274px;
 `;
 
 export const Border = styled.span`
-  border-left: 1px solid #12141780;
+  border-left: 1px solid ${theme.colors.black80};
   margin: 0 4px;
 `;
 

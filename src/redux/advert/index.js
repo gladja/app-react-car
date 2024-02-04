@@ -1,3 +1,8 @@
 export { getAdvert } from './operations';
 
-export { selectCars } from './selectors';
+export {
+  selectCars,
+  selectIsLoading,
+  selectFilter,
+  selectFavorites,
+} from './selectors';

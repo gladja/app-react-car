@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from '../../styles';
 
 export const WrapFilter = styled.div`
   display: flex;
@@ -14,6 +15,6 @@ export const LabelWrap = styled.div`
 
 export const Label = styled.label`
   font-size: 14px;
-  color: #8a8a89;
+  color: ${theme.colors.grey};
   margin-bottom: 8px;
 `;

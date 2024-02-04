@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { theme } from '../../styles';
 
 export const Wrap = styled.div`
   display: flex;
@@ -12,13 +13,12 @@ export const Wrap = styled.div`
 export const Logo = styled.p`
   font-size: 36px;
   font-weight: 700;
-  color: #000;
-  /* font-style: italic; */
+  color: ${theme.colors.black};
   text-transform: uppercase;
 `;
 
 export const LogoColor = styled.span`
-  color: #3470ff;
+  color: ${theme.colors.blue};
 `;
 
 export const Nav = styled.nav`
@@ -30,6 +30,6 @@ export const Nav = styled.nav`
 
 export const NavLinkStyled = styled(NavLink)`
   &.active {
-    color: #3470ff;
+    color: ${theme.colors.blue};
   }
 `;
