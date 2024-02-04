@@ -1,7 +1,7 @@
 import { Container } from '../components/Container';
 import { Home } from '../components/Home';
 
-export const HomePage = () => {
+const HomePage = () => {
   return (
     <>
       <Container>
@@ -10,3 +10,5 @@ export const HomePage = () => {
     </>
   );
 };
+
+export default HomePage;

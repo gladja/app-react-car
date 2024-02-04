@@ -2,7 +2,7 @@ import { Container } from '../components/Container';
 import { Favorites } from '../components/Favorites';
 import { Header } from '../components/Header';
 
-export const FavoritesPage = () => {
+const FavoritesPage = () => {
   return (
     <>
       <Container>
@@ -12,3 +12,5 @@ export const FavoritesPage = () => {
     </>
   );
 };
+
+export default FavoritesPage;

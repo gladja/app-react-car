@@ -1,9 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from 'components/Layout';
-import { HomePage } from 'pages/HomePage';
-import { CatalogPage } from 'pages/CatalogPage';
-import { FavoritesPage } from 'pages/FavoritesPage';
+import { lazy } from 'react';
 import { GlobalStyle } from '../styles';
+
+//lazy
+const HomePage = lazy(() => import('../pages/HomePage'));
+const CatalogPage = lazy(() => import('../pages/CatalogPage'));
+const FavoritesPage = lazy(() => import('../pages/FavoritesPage'));
 
 function App() {
   return (
@@ -20,4 +23,5 @@ function App() {
     </>
   );
 }
+
 export default App;
