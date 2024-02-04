@@ -12,8 +12,7 @@ body {
   font-family: 'Manrope', sans-serif; 
   font-weight: 400;
   font-style: normal;
-  color: #111111;
-  /* width: 100%; */
+  color: #121417;
   height: 100%;
   margin: 0;
 }

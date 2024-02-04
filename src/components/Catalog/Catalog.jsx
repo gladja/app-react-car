@@ -59,7 +59,7 @@ export const Catalog = () => {
             <WrapCard>
               <Card>
                 <WrapImg>
-                  <Img src={itm.img ? itm.img : img} alt="" />
+                  <Img src={itm.img ? itm.img : img} alt={itm.make} />
                 </WrapImg>
                 <WrapModel>
                   <div>
